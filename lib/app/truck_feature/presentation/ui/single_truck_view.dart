@@ -145,6 +145,7 @@ class _MyDraggableScrollableSheetState
                                 ),
                               ),
                               TabBar(
+                                isScrollable: true,
                                 tabs: data!.categories
                                     .map((e) => Tab(
                                           text: e.name,
@@ -159,7 +160,6 @@ class _MyDraggableScrollableSheetState
                                       children: category.items
                                           .map((e) => SizedBox(
                                                 height: 100,
-
                                                 child: Card(
                                                     elevation: 0,
                                                     color: const Color.fromRGBO(
@@ -170,23 +170,23 @@ class _MyDraggableScrollableSheetState
                                                           MainAxisAlignment
                                                               .start,
                                                       children: [
-                                                        Expanded(
-                                                          flex: 1,
+                                                        SizedBox.square(
+                                                          dimension: 100,
                                                           child: Container(
-                                                            width: 100,height: 100,
-                                                            decoration: const BoxDecoration(
-                                                                // color: Colors.red,
-                                                                // image: DecorationImage(
-                                                                //     image: AssetImage(
-                                                                //       "assets/images/food.jpeg",
-                                                                //     ),),
+                                                            width: double.maxFinite,
+                                                            height: double
+                                                                .maxFinite,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              image:
+                                                                  DecorationImage(
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                                image:
+                                                                    AssetImage(
+                                                                  "assets/images/food.jpeg",
                                                                 ),
-                                                            child: Image.asset(
-                                                              'assets/images/food.jpeg',
-                                                              width: 50,
-                                                              height: 50,
-                                                              fit: BoxFit
-                                                                  .scaleDown,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -194,7 +194,6 @@ class _MyDraggableScrollableSheetState
                                                           width: 10,
                                                         ),
                                                         Expanded(
-                                                          flex: 3,
                                                           child: Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
@@ -208,7 +207,11 @@ class _MyDraggableScrollableSheetState
                                                                     .bodyLarge,
                                                               ),
                                                               Text(
-                                                                  "\$${e.price.toString()}"),
+                                                                "\$${e.price.toString()}",
+                                                                style: const TextStyle(
+                                                                    color: Colors
+                                                                        .grey),
+                                                              ),
                                                               Spacer(),
                                                               Container(
                                                                 padding:
