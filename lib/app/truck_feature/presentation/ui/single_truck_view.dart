@@ -37,30 +37,6 @@ class SingleTruckView extends StatelessWidget {
           )
         ],
       ),
-
-//       body: CustomScrollView(
-//         slivers: [
-//           SliverAppBar(
-//             floating: false,
-//             pinned: true,
-//             automaticallyImplyLeading: false,
-//             expandedHeight: MediaQuery.of(context).size.height * .3,
-//             collapsedHeight: 150,
-//             flexibleSpace: FlexibleSpaceBar(
-//               centerTitle: true,
-// // background: Container(color: Colors.red,),
-//               background: Image.network(
-//                 "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
-//                 fit: BoxFit.cover,
-//                 errorBuilder: (_, __, ___) => Icon(Icons.downloading_sharp),
-//                 height: double.maxFinite,
-//                 width: double.maxFinite,
-//               ),
-//             ),
-//           ),
-//
-//         ],
-//       ),
     );
   }
 }
@@ -173,7 +149,8 @@ class _MyDraggableScrollableSheetState
                                                         SizedBox.square(
                                                           dimension: 100,
                                                           child: Container(
-                                                            width: double.maxFinite,
+                                                            width: double
+                                                                .maxFinite,
                                                             height: double
                                                                 .maxFinite,
                                                             decoration:
