@@ -27,7 +27,7 @@ you have to get a Google map api key and use it in android manifest or appdeliga
 ## Tech Stack
 
 
-**Server:** Flutter, Google map for Flutter
+**App:** Flutter, Google map for Flutter
 
 
 ## Code
