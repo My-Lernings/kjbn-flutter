@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen>
           onLoaded: (composition) {
             _controller
               ..duration = composition.duration
-              ..forward().whenComplete(() => Navigator.push(
+              ..forward().whenComplete(() => Navigator.pushReplacement(
                     context,
                     CupertinoPageRoute(builder: (context) => MapView()),
                   ));
