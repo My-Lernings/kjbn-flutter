@@ -28,7 +28,13 @@ class TruckMapViewModel extends ChangeNotifier {
   final FoodTruckRepository _repository;
 
   GoogleMapController? _googleMapController;
+
   GoogleMapController? get googleMapController => _googleMapController;
+
+  /// Setter for [_googleMapController]
+  ///
+  /// This setter is used to set the [_googleMapController] when the GoogleMap widget is created.
+  /// It also triggers the initial data fetching process.
   set setGoogleMapController(GoogleMapController v) {
     _googleMapController = v;
     notifyListeners();
@@ -52,6 +58,9 @@ class TruckMapViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Asynchronously determines the current position,
+  // sets the position, and animates the camera to the new position on the Google Map.
+  //Handles any errors by showing a message.
   Future<void> getPosition() async {
     try {
       final pos = await determinePosition();
@@ -238,6 +247,21 @@ class TruckMapViewModel extends ChangeNotifier {
     return LatLng(centerLat, centerLng);
   }
 
+  /// Calculates the distance between two points on the Earth's surface using the
+  /// Haversine formula.
+  ///
+  /// The Haversine formula is used to calculate the great-circle distance between
+  /// two points on a sphere given their longitudes and latitudes. It is commonly
+  /// used in navigation and geographic applications.
+  ///
+  /// Parameters:
+  /// - `point1`: The first point, represented by its latitude and longitude.
+  /// - `point2`: The second point, represented by its latitude and longitude.
+  ///
+  /// Returns:
+  /// The distance between the two points in meters.
+  ///
+  /// Note: The Earth's radius used in this calculation is 6371000 meters.
   double _calculateDistance(LatLng point1, LatLng point2) {
     const double earthRadius = 6371000; // in meters
 
