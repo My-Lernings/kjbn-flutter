@@ -88,24 +88,26 @@ class TruckMapViewModel extends ChangeNotifier {
     _boundMoved = v;
     notifyListeners();
   }
-  
+
   List<FoodTruck> list = [];
-      /// Retrieves data based on the given [params] and updates the UI accordingly.
-    ///
-    /// This function checks if the data is already being loaded. If it is, the function
-    /// returns early. Otherwise, it sets the loading state to true and calls the
-    /// [GetTrucksUseCase] with the provided [params]. The result of the call is then
-    /// handled using the `fold` method. If there is an error, the loading state is set
-    /// to false and an error message is shown. If the call is successful, the loading
-    /// state is set to false, the bound moved flag is set to false, the list of food trucks
-    /// is updated, markers are created from the food trucks, and the camera is animated
-    /// to show the updated bounds.
-    ///
-    /// Parameters:
-    /// - `params`: The bounds of the area to retrieve data for.
-    ///
-    /// Returns:
-    /// - A `Future` that completes when the data is retrieved and the UI is updated.  Future<void> getData(LatLngBounds params) async {
+
+  /// Retrieves data based on the given [params] and updates the UI accordingly.
+  ///
+  /// This function checks if the data is already being loaded. If it is, the function
+  /// returns early. Otherwise, it sets the loading state to true and calls the
+  /// [GetTrucksUseCase] with the provided [params]. The result of the call is then
+  /// handled using the `fold` method. If there is an error, the loading state is set
+  /// to false and an error message is shown. If the call is successful, the loading
+  /// state is set to false, the bound moved flag is set to false, the list of food trucks
+  /// is updated, markers are created from the food trucks, and the camera is animated
+  /// to show the updated bounds.
+  ///
+  /// Parameters:
+  /// - `params`: The bounds of the area to retrieve data for.
+  ///
+  /// Returns:
+  /// - A `Future` that completes when the data is retrieved and the UI is updated.
+  Future<void> getData(LatLngBounds params) async {
     if (_isLoading) return;
     setIsLoading = true;
     final res = await GetTrucksUseCase(repository: _repository).call(
@@ -140,13 +142,14 @@ class TruckMapViewModel extends ChangeNotifier {
     _menu = v;
     notifyListeners();
   }
-/// Retrieves the menu associated with the given `id` asynchronously.
-///
-/// Parameters:
-/// - `id`: The ID of the menu to retrieve.
-///
-/// Returns:
-/// A `Future<void>` that completes when the menu is retrieved.
+
+  /// Retrieves the menu associated with the given `id` asynchronously.
+  ///
+  /// Parameters:
+  /// - `id`: The ID of the menu to retrieve.
+  ///
+  /// Returns:
+  /// A `Future<void>` that completes when the menu is retrieved.
   Future<void> getMenu(String id) async {
     final caller = GetMenuByIdUseCase(repository: _repository);
     setIsLoading = true;
@@ -167,6 +170,7 @@ class TruckMapViewModel extends ChangeNotifier {
     markers.addAll(r.map((e) => _createMarkerFromTruck(e, icon)).toList());
     return markers;
   }
+
   // Creates a Marker from the given FoodTruck `e` and BitmapDescriptor `icon`.
   Marker _createMarkerFromTruck(FoodTruck e, BitmapDescriptor icon) {
     return Marker(
@@ -193,15 +197,16 @@ class TruckMapViewModel extends ChangeNotifier {
   }
 
   LatLngBounds? _previousBounds;
+
   /// Checks the movement of the camera in the Google Map.
-///
-/// This function is called whenever the camera moves. It calculates the
-/// distance between the current and previous center of the visible region.
-/// If the distance is greater than half of the width or height of the
-/// previous visible region, it prints a message indicating that the camera
-/// view has moved more than half of its previous position.
-///
-/// This function does not return any value.
+  ///
+  /// This function is called whenever the camera moves. It calculates the
+  /// distance between the current and previous center of the visible region.
+  /// If the distance is greater than half of the width or height of the
+  /// previous visible region, it prints a message indicating that the camera
+  /// view has moved more than half of its previous position.
+  ///
+  /// This function does not return any value.
   void _checkCameraMovement() async {
     if (_googleMapController == null) return;
     LatLngBounds bounds = await _googleMapController!.getVisibleRegion();
@@ -253,6 +258,5 @@ class TruckMapViewModel extends ChangeNotifier {
   double _degreesToRadians(double degrees) {
     return degrees * pi / 180;
   }
-
-
+}
 //37.7713221,-122.4333159
